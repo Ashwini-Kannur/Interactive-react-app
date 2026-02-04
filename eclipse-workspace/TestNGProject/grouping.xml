@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Grouping">
+  <test  name="group">
+  <groups>
+  	<run>
+  	<include name="functional"></include>
+  	
+  <!--	<exclude name="regression"></exclude>-->
+  	</run>
+  </groups>
+    <classes>
+      <class name="Day3.grouping1"/>
+      <class name="Day3.grouping2"/>
+      <class name="Day3.grouping3"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

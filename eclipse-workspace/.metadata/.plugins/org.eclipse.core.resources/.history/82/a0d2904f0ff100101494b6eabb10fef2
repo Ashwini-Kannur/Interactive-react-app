@@ -1,0 +1,35 @@
+package Day15;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class mouseEvents {
+
+	public static void main(String[] args) {
+		
+		WebDriver driver=new ChromeDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+		driver.get("https://demo.opencart.com/");
+		WebElement desktops = wait.until(
+			    ExpectedConditions.visibilityOfElementLocated(
+			        By.xpath("//a[contains(@class,'dropdown-toggle') and text()='Desktops']")
+			    )
+			);
+		WebElement ID2=driver.findElement(By.xpath("//a[@class='nav-link'][normalize-space()='Mac (1)']"));
+		Actions action=new Actions(driver);
+		action.moveToElement(ID1);
+		action.moveToElement(ID2).click().build().perform();
+		driver.close();
+		
+		}
+
+}

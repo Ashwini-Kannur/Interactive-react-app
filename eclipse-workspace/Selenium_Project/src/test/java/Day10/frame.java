@@ -1,0 +1,47 @@
+package Day10;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class frame {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://ui.vision/demo/webtest/frames/");
+		driver.manage().window().maximize();
+//		WebElement frame1=driver.findElement(By.xpath("//frame[@src='frame_1.html']"));
+//		driver.switchTo().frame(frame1);
+//		driver.findElement(By.xpath("//input[@name='mytext1']")).sendKeys("Hi");
+//		//to go back to main page
+//		driver.switchTo().defaultContent();
+		
+		//frame2
+		WebElement frame2=driver.findElement(By.xpath("//frame[@src='frame_2.html']"));
+		driver.switchTo().frame(frame2);
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//input[@name='mytext2']")).sendKeys("Hello");
+		driver.switchTo().defaultContent();
+		
+		
+		//if the frame contains another frame use iframe
+		
+		WebElement frame3=driver.findElement(By.xpath("//frame[@src='frame_3.html']"));
+		driver.switchTo().frame(frame3);
+		//driver.findElement(By.xpath("//input[@name='mytext3']")).sendKeys("Hey");
+		
+		//to interact with another frame move to the outer frame then to inner frame
+		
+		driver.switchTo().frame(0);
+		//to go to the inner iframe open the url of the frame and extract the xpath
+		driver.findElement(By.xpath("//div[@id='i9']//div[@class='AB7Lab Id5V1']")).click();
+		driver.switchTo().defaultContent();
+		driver.close();
+		
+	}
+
+}

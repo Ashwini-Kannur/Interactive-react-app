@@ -1,0 +1,53 @@
+package TestCases;
+
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import PageObjects.homePage;
+import PageObjects.regPage;
+
+public class TC001_Registration  extends baseClass{
+
+	public WebDriver driver;
+	
+	
+	@Test
+	public void verify_acct_registation() {
+		homePage hp=new homePage(driver);
+		hp.myAccount();
+		hp.register();
+		
+		regPage rp=new regPage(driver);
+		rp.setFirstName(randomString().toUpperCase());
+		rp.setLastname(randomString().toUpperCase());
+		rp.setEmail(randomString()+"@gmail.com");
+		rp.setTelephone(randomNumber());
+		String pwwdString=randomAlphanumeric();
+		rp.setPassword(pwwdString);
+		rp.setConfirmPassword(pwwdString);
+		rp.checkPolicy();
+		rp.continueBtn();
+		String cnfMsg=rp.getConfirmMessage();
+		Assert.assertEquals(cnfMsg, "Your Account Has Been Created!");
+		
+	}
+	public String randomString() {
+		String generateString=RandomStringUtils.randomAlphabetic(5);
+		return generateString;
+	}
+	public String randomNumber() {
+		String generateNumber= RandomStringUtils.randomNumeric(10);
+		return generateNumber;
+		
+	}
+	public String randomAlphanumeric() {
+		String generateAlpha= RandomStringUtils.randomAlphabetic(3);
+		String generateNum=RandomStringUtils.randomNumeric(3);
+		return (generateAlpha + "@" +generateNum);
+	}
+	
+	
+}

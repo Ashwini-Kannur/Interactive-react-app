@@ -1,0 +1,41 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class regPage extends basePage{
+	WebDriver driver;
+	public regPage(WebDriver driver) {
+		super(driver);
+
+	}
+	@FindBy(xpath = "//input[@id='input-firstname']")
+	WebElement firstName;
+	
+	@FindBy(xpath = "//input[@id='input-lastname']")
+	WebElement lastName;
+	
+	@FindBy(xpath = "//input[@id='input-email']")
+	WebElement email;
+	
+	@FindBy(xpath = "//input[@id='input-telephone']")
+	WebElement telephone;
+	
+	@FindBy(xpath = "//input[@id='input-password']")
+	WebElement passwordEle;
+	
+	@FindBy(xpath = "//input[@id='input-confirm']")
+	WebElement confirmPasswordEle;
+	
+	@FindBy(xpath = "//input[@name='agree']")
+	WebElement policyEle;
+	
+	@FindBy(xpath = "//input[@value='Continue']")
+	WebElement continueEle;
+	
+	//Action Meth
+	public void setFirstName(String fName) {
+		
+	}
+}

@@ -1,0 +1,9 @@
+<project xmlns="http://maven.apache.org/" xmlns:xsi="http://www.w3.org" xsi:schemaLocation="maven.apache.org maven.apache.org">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Sample_project</groupId>
+  <artifactId>Sample_project</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	
+  </dependencies>
+</project>

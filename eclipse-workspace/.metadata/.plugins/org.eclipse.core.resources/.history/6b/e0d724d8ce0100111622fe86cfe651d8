@@ -1,0 +1,28 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class homePage extends basePage{
+	public WebDriver driver;
+	public homePage(WebDriver driver) {
+		super(driver);
+		}
+	
+		@FindBy(xpath ="//span[normalize-space()='My Account']")
+		WebElement linkMyAccount;
+		
+		@FindBy(xpath = "//a[normalize-space()='Register']")
+		WebElement linkRegister;
+		
+		//action Methods
+		
+		public void myAccount() {
+			linkMyAccount.click();
+		}
+		public void register() {
+			linkRegister.click();
+		}
+
+}

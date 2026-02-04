@@ -1,0 +1,12 @@
+package Day15;
+
+import org.openqa.selenium.WebDriver;
+
+public class mouseEvents {
+
+	public static void main(String[] args) {
+		WebDriver driver=new WebDriver();
+		
+		}
+
+}

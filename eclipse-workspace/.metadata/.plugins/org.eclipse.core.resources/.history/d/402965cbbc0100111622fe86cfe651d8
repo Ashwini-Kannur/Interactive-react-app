@@ -1,0 +1,13 @@
+package PageObjects;
+
+import org.openqa.selenium.WebDriver;
+
+public class regPage extends basePage{
+	WebDriver driver;
+	public regPage(WebDriver driver) {
+		super(driver);
+
+	}
+	
+	
+}

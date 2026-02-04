@@ -1,0 +1,66 @@
+package TestCases;
+
+import java.time.Duration;
+
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.math3.analysis.function.Max;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import PageObjects.homePage;
+import PageObjects.regPage;
+
+public class TC001_Registration {
+
+	public WebDriver driver;
+	@BeforeClass
+	void setUp() {
+		driver=new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://tutorialsninja.com/demo/");
+		driver.manage().window().maximize();
+	}
+	@AfterClass
+	public void tearDown() {
+		driver.close();
+	}
+	
+	@Test
+	public void verify_acct_registation() {
+		homePage hp=new homePage(driver);
+		hp.myAccount();
+		hp.register();
+		
+		regPage rp=new regPage(driver);
+		rp.setFirstName(randomString().toUpperCase());
+		rp.setLastname(randomString().toUpperCase());
+		rp.setEmail(randomString()+"@gmail.com");
+		rp.setTelephone(randomNumber());
+		String pwwdString=randomAlphanumeric();
+		rp.setPassword(pwwdString);
+		rp.setConfirmPassword(pwwdString);
+		rp.checkPolicy();
+		rp.continueBtn();
+		String cnfMsg=
+	}
+	public String randomString() {
+		String generateString=RandomStringUtils.randomAlphabetic(5);
+		return generateString;
+	}
+	public String randomNumber() {
+		String generateNumber= RandomStringUtils.randomNumeric(10);
+		return generateNumber;
+		
+	}
+	public String randomAlphanumeric() {
+		String generateAlpha= RandomStringUtils.randomAlphabetic(3);
+		String generateNum=RandomStringUtils.randomNumeric(3);
+		return (generateAlpha + "@" +generateNum);
+	}
+	
+	
+}

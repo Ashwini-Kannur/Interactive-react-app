@@ -1,0 +1,28 @@
+package TestCases;
+
+import java.time.Duration;
+
+import org.apache.commons.math3.analysis.function.Max;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+public class TC001_Registration {
+
+	public WebDriver driver;
+	@BeforeClass
+	void setUp() {
+		driver=new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://tutorialsninja.com/demo/");
+		driver.manage().window().maximize();
+	}
+	@AfterClass
+	public void tearDown() {
+		driver.close();
+	}
+	public 
+	
+}

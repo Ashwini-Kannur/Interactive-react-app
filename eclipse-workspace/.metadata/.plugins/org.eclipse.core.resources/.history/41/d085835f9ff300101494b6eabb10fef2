@@ -1,0 +1,41 @@
+package Day15;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class doubleClick {
+
+	public static void main(String[] args) {
+		WebDriver driver=new ChromeDriver();
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		driver.get("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3");
+		wait.until(ExpectedConditions.titleContains("W3Schools Tryit Editor"));
+		
+		driver.switchTo().frame("iframeResult");
+		WebElement f1=driver.findElement(By.xpath("//input[@id='field1']"));
+		WebElement f2=driver.findElement(By.xpath("//input[@id='field2']"));
+		WebElement buttonElement=driver.findElement(By.xpath("//button[normalize-space()='Copy Text']"));
+		f1.clear();
+		f1.sendKeys("Hello Selenium");
+		Actions action=new Actions(driver);
+		action.doubleClick(buttonElement).perform();
+		
+		if(f2.getText().equals("Hello Selenium")) {
+			System.out.println("Text copies");
+		}
+			else {
+				
+			}
+		}
+	}
+
+}

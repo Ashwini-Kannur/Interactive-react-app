@@ -1,0 +1,469 @@
+[
+  {
+    "id": "TC-001",
+    "module": "generate the testcases for logi auth",
+    "title": "Successful login with valid credentials",
+    "description": "Verify a registered user can log in successfully with correct username/email and password.",
+    "steps": [
+      "Navigate to https://flexos.test.varshealth.com/login",
+      "Enter a valid registered username/email",
+      "Enter the correct corresponding password",
+      "Click the 'Login' / 'Sign In' button"
+    ],
+    "expectedResult": "User is authenticated and redirected to the application's home/dashboard page; a valid session/token is created.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-002",
+    "module": "generate the testcases for logi auth",
+    "title": "Login fails with incorrect password",
+    "description": "Verify the system rejects login attempts with a valid username but wrong password.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid registered username/email",
+      "Enter an incorrect password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected with a generic error message (e.g., 'Invalid username or password'); user remains on the login page; no session is created.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-003",
+    "module": "generate the testcases for logi auth",
+    "title": "Login fails with non-existent username",
+    "description": "Verify the system rejects login attempts for a username/email that does not exist in the system.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a username/email not registered in the system",
+      "Enter any password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected with a generic error message that does not reveal whether the account exists (prevents user enumeration).",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-004",
+    "module": "generate the testcases for logi auth",
+    "title": "Empty username and password submission",
+    "description": "Verify client-side validation prevents submission when both fields are empty.",
+    "steps": [
+      "Navigate to the login page",
+      "Leave both username and password fields blank",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Form does not submit; inline validation messages such as 'Username is required' and 'Password is required' are displayed.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-005",
+    "module": "generate the testcases for logi auth",
+    "title": "Empty password with valid username",
+    "description": "Verify validation triggers when password field is left blank.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username/email",
+      "Leave password field blank",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Form does not submit (or is rejected server-side); 'Password is required' validation message is shown.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-006",
+    "module": "generate the testcases for logi auth",
+    "title": "Empty username with valid password",
+    "description": "Verify validation triggers when username field is left blank.",
+    "steps": [
+      "Navigate to the login page",
+      "Leave username/email field blank",
+      "Enter any password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Form does not submit; 'Username is required' validation message is shown.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-007",
+    "module": "generate the testcases for logi auth",
+    "title": "Username/email field case sensitivity",
+    "description": "Verify whether login succeeds when username/email is entered with different letter casing.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username/email but with mixed/upper case (e.g., User@Example.com vs user@example.com)",
+      "Enter the correct password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login succeeds if usernames are intended to be case-insensitive (typical for emails); behavior should match documented spec.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-008",
+    "module": "generate the testcases for logi auth",
+    "title": "Password field is masked",
+    "description": "Verify password input is masked by default and not visible in plain text.",
+    "steps": [
+      "Navigate to the login page",
+      "Click into the password field and type a password"
+    ],
+    "expectedResult": "Characters are displayed as dots/asterisks; password is not shown in plain text unless a 'show password' toggle is explicitly used.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-009",
+    "module": "generate the testcases for logi auth",
+    "title": "Show/hide password toggle (if present)",
+    "description": "Verify the show/hide password icon, if present, correctly toggles password visibility.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a password into the password field",
+      "Click the 'show password' (eye) icon",
+      "Click it again to hide"
+    ],
+    "expectedResult": "Password text toggles between masked and plain text correctly without altering the entered value.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-010",
+    "module": "generate the testcases for logi auth",
+    "title": "Invalid email format validation",
+    "description": "Verify the username/email field validates proper email format if email is used as the identifier.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter an improperly formatted email (e.g., 'user@', 'user.com', 'user@@test.com')",
+      "Enter any password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Inline validation error is shown indicating invalid email format; form is not submitted to the server.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-011",
+    "module": "generate the testcases for logi auth",
+    "title": "SQL injection attempt in login fields",
+    "description": "Verify the login form is not vulnerable to SQL injection via username/password fields.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a SQL injection payload in the username field (e.g., admin' OR '1'='1)",
+      "Enter any value in password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected as invalid credentials; no database error is exposed; no unauthorized access is granted.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-012",
+    "module": "generate the testcases for logi auth",
+    "title": "XSS injection attempt in login fields",
+    "description": "Verify the login form sanitizes/escapes script input and is not vulnerable to reflected XSS.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a script payload (e.g., <script>alert(1)</script>) into username and/or password fields",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Input is treated as plain text/escaped; no script executes; error message displayed without rendering injected HTML/JS.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-013",
+    "module": "generate the testcases for logi auth",
+    "title": "Account lockout after repeated failed attempts",
+    "description": "Verify brute-force protection locks or throttles the account after a defined number of consecutive failed login attempts.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username with an incorrect password",
+      "Repeat the failed attempt the configured threshold number of times (e.g., 5 times)",
+      "Attempt to log in again, including with the correct password"
+    ],
+    "expectedResult": "Account is temporarily locked or a CAPTCHA/delay is triggered; further attempts (even with correct credentials) are blocked until lockout period expires or account is unlocked.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-014",
+    "module": "generate the testcases for logi auth",
+    "title": "Login with leading/trailing whitespace in credentials",
+    "description": "Verify the system trims or correctly handles whitespace entered before/after username or password.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username with leading/trailing spaces (e.g., '  user@example.com  ')",
+      "Enter the correct password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Username is trimmed appropriately and login succeeds; password whitespace handling matches the security spec (typically not trimmed).",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-015",
+    "module": "generate the testcases for logi auth",
+    "title": "Maximum length input boundary test",
+    "description": "Verify the system handles extremely long input strings in username/password fields gracefully.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter an extremely long string (e.g., 5000+ characters) into the username field",
+      "Enter an extremely long string into the password field",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Input is either truncated/rejected with a clear validation message, or handled gracefully without server error, crash, or exposed stack trace.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-016",
+    "module": "generate the testcases for logi auth",
+    "title": "'Forgot Password' link navigation",
+    "description": "Verify the 'Forgot Password' link (if present) navigates to the correct password reset flow.",
+    "steps": [
+      "Navigate to the login page",
+      "Click the 'Forgot Password' link"
+    ],
+    "expectedResult": "User is redirected to a password reset page where they can request a reset link via email/username.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-017",
+    "module": "generate the testcases for logi auth",
+    "title": "'Remember Me' functionality (if present)",
+    "description": "Verify the 'Remember Me' checkbox persists the session/login across browser restarts as expected.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter valid credentials and check 'Remember Me'",
+      "Click 'Login'",
+      "Close and reopen the browser, then revisit the application URL"
+    ],
+    "expectedResult": "User remains logged in without needing to re-enter credentials, per the 'Remember Me' duration policy.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-018",
+    "module": "generate the testcases for logi auth",
+    "title": "Login without 'Remember Me' checked",
+    "description": "Verify session does not persist after browser closure when 'Remember Me' is unchecked.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter valid credentials without checking 'Remember Me'",
+      "Click 'Login'",
+      "Close and reopen the browser, then revisit the application URL"
+    ],
+    "expectedResult": "User is prompted to log in again; session was not persisted.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-019",
+    "module": "generate the testcases for logi auth",
+    "title": "Session expiry / token timeout",
+    "description": "Verify the user's session expires correctly after the configured inactivity/token timeout period.",
+    "steps": [
+      "Log in successfully",
+      "Leave the session idle for longer than the configured timeout period",
+      "Attempt to perform an action or navigate within the app"
+    ],
+    "expectedResult": "User is logged out automatically and redirected to the login page with a session-expired message.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-020",
+    "module": "generate the testcases for logi auth",
+    "title": "Direct access to authenticated page without login",
+    "description": "Verify unauthenticated users are redirected to the login page when attempting to access protected routes directly.",
+    "steps": [
+      "Without logging in, attempt to navigate directly to a known authenticated/dashboard URL within the app"
+    ],
+    "expectedResult": "User is redirected to https://flexos.test.varshealth.com/login (or equivalent) instead of viewing protected content.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-021",
+    "module": "generate the testcases for logi auth",
+    "title": "Back button after logout does not restore session",
+    "description": "Verify browser back navigation after logout does not expose previously authenticated pages from cache.",
+    "steps": [
+      "Log in successfully and navigate to a few authenticated pages",
+      "Log out",
+      "Click the browser's back button"
+    ],
+    "expectedResult": "User is redirected to the login page or shown an unauthenticated state; cached authenticated content/data is not accessible.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-022",
+    "module": "generate the testcases for logi auth",
+    "title": "Logout functionality",
+    "description": "Verify the logout action correctly terminates the session and invalidates the token.",
+    "steps": [
+      "Log in successfully",
+      "Click 'Logout'"
+    ],
+    "expectedResult": "User is redirected to the login page; session/token is invalidated server-side; protected pages are no longer accessible.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-023",
+    "module": "generate the testcases for logi auth",
+    "title": "Concurrent login from multiple devices/browsers",
+    "description": "Verify behavior when the same user logs in simultaneously from two different sessions/devices.",
+    "steps": [
+      "Log in as the same user on Browser A",
+      "Log in as the same user on Browser B",
+      "Perform actions on both sessions"
+    ],
+    "expectedResult": "Behavior matches the application's policy — either both sessions remain active concurrently, or the earlier session is invalidated, per documented requirements.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-024",
+    "module": "generate the testcases for logi auth",
+    "title": "HTTPS enforcement and secure cookie flags",
+    "description": "Verify the login page and authentication tokens are transmitted securely.",
+    "steps": [
+      "Inspect the page URL and confirm it loads over HTTPS",
+      "Attempt to access via HTTP if applicable",
+      "Inspect cookies/tokens set after login using browser dev tools"
+    ],
+    "expectedResult": "Page is served only over HTTPS (HTTP redirects to HTTPS); authentication cookies are flagged Secure, HttpOnly, and SameSite as appropriate.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-025",
+    "module": "generate the testcases for logi auth",
+    "title": "CSRF protection on login form",
+    "description": "Verify the login request includes anti-CSRF protections where applicable.",
+    "steps": [
+      "Inspect the login request/response for CSRF token usage (via dev tools/network tab)",
+      "Attempt to replay/submit the login form from an unauthorized origin"
+    ],
+    "expectedResult": "Login form includes CSRF protections (token, SameSite cookies, or equivalent); cross-origin submission is rejected.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-026",
+    "module": "generate the testcases for logi auth",
+    "title": "Disabled/locked account login attempt",
+    "description": "Verify a user with a disabled or administratively locked account cannot log in.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter credentials for an account known to be disabled/locked",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected with a clear message (e.g., 'Account disabled, contact administrator') without exposing sensitive account state details beyond what's intended.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-027",
+    "module": "generate the testcases for logi auth",
+    "title": "Login with special characters and Unicode in password",
+    "description": "Verify the password field correctly accepts and validates special characters and Unicode (e.g., emoji, accented letters).",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username",
+      "Enter a password containing special characters/Unicode that matches a registered account's actual password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login succeeds when the credentials match exactly, confirming no encoding/normalization issues corrupt the password.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-028",
+    "module": "generate the testcases for logi auth",
+    "title": "Tab order and keyboard accessibility",
+    "description": "Verify the login form is fully operable via keyboard alone, including submission with Enter key.",
+    "steps": [
+      "Navigate to the login page using only the keyboard (Tab key)",
+      "Tab through username, password, and 'Login' button in logical order",
+      "Enter valid credentials and press 'Enter' to submit"
+    ],
+    "expectedResult": "Focus order is logical; all fields/buttons are reachable and operable via keyboard; pressing Enter submits the form successfully.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-029",
+    "module": "generate the testcases for logi auth",
+    "title": "Screen reader / ARIA label accessibility",
+    "description": "Verify form fields and error messages are properly labeled for assistive technologies.",
+    "steps": [
+      "Inspect the login form's HTML/ARIA attributes using browser dev tools or an accessibility checker",
+      "Trigger a validation error and inspect how it is announced"
+    ],
+    "expectedResult": "Input fields have associated labels/aria-labels; error messages are programmatically associated with their fields (e.g., aria-describedby) for screen reader announcement.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-030",
+    "module": "generate the testcases for logi auth",
+    "title": "Responsive layout on mobile and tablet viewports",
+    "description": "Verify the login page renders correctly and remains usable across различных screen sizes.",
+    "steps": [
+      "Open the login page on a mobile viewport (e.g., 375x667)",
+      "Open the login page on a tablet viewport (e.g., 768x1024)",
+      "Verify form elements, branding, and buttons render without overlap or cutoff"
+    ],
+    "expectedResult": "Login form is fully visible, correctly laid out, and usable across mobile, tablet, and desktop viewport sizes.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-031",
+    "module": "generate the testcases for logi auth",
+    "title": "Cross-browser compatibility",
+    "description": "Verify the login page functions consistently across major supported browsers.",
+    "steps": [
+      "Open the login page in Chrome, Firefox, Edge, and Safari",
+      "Perform a successful login in each browser"
+    ],
+    "expectedResult": "Login page renders consistently and login succeeds in all supported browsers without functional differences.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-032",
+    "module": "generate the testcases for logi auth",
+    "title": "Page load performance",
+    "description": "Verify the login page loads within an acceptable time threshold.",
+    "steps": [
+      "Navigate to https://flexos.test.varshealth.com/login",
+      "Measure page load time using browser dev tools (Network tab) or a performance testing tool"
+    ],
+    "expectedResult": "Page fully loads (DOM interactive and form usable) within the agreed performance SLA (e.g., under 3 seconds on standard network conditions).",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  },
+  {
+    "id": "TC-033",
+    "module": "generate the testcases for logi auth",
+    "title": "Error message does not reveal sensitive system details",
+    "description": "Verify error responses do not leak stack traces, server details, or internal implementation information.",
+    "steps": [
+      "Trigger various login failure scenarios (wrong password, server error simulation if possible)",
+      "Inspect the displayed error message and network response payload"
+    ],
+    "expectedResult": "Error messages are generic and user-friendly; no stack traces, internal paths, or sensitive debug data are exposed in the UI or API response.",
+    "status": "draft",
+    "createdAt": "2026-06-23T09:02:13.417Z"
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "name": "qa-workflow-extension",
+  "displayName": "QA Workflow",
+  "description": "Generate, refine, and automate QA test cases via the Claude CLI",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "qaWorkflow.generateTestCases",
+        "title": "QA: Generate Test Cases from Requirement"
+      },
+      {
+        "command": "qaWorkflow.markRefined",
+        "title": "QA: Mark Test Cases as Refined"
+      },
+      {
+        "command": "qaWorkflow.generateScripts",
+        "title": "QA: Generate Scripts for Module"
+      },
+      {
+        "command": "qaWorkflow.runTests",
+        "title": "QA: Run Playwright Tests & Record Report"
+      }
+    ],
+    "configuration": {
+      "title": "QA Workflow",
+      "properties": {
+        "qaWorkflow.dashboardDataPath": {
+          "type": "string",
+          "default": "qa-dashboard/data",
+          "description": "Path (absolute, or relative to the workspace root) to the qa-dashboard data directory containing testcases.json and results.json."
+        },
+        "qaWorkflow.targetAppPath": {
+          "type": "string",
+          "default": "target-app",
+          "description": "Path (absolute, or relative to the workspace root) to the application under test, where generated Playwright specs are written."
+        },
+        "qaWorkflow.claudeCliPath": {
+          "type": "string",
+          "default": "claude",
+          "description": "Path to the claude CLI executable."
+        }
+      }
+    }
+  }
+}

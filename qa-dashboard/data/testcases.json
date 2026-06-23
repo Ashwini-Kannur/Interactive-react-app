@@ -1,0 +1,494 @@
+[
+  {
+    "id": "TC-001",
+    "title": "User can log in with valid credentials",
+    "requirement": "REQ-AUTH-01: Login",
+    "status": "automated",
+    "createdAt": "2026-06-01"
+  },
+  {
+    "id": "TC-002",
+    "title": "User sees error on invalid password",
+    "requirement": "REQ-AUTH-01: Login",
+    "status": "automated",
+    "createdAt": "2026-06-01"
+  },
+  {
+    "id": "TC-003",
+    "title": "User can reset password via email link",
+    "requirement": "REQ-AUTH-02: Password Reset",
+    "status": "refined",
+    "createdAt": "2026-06-03"
+  },
+  {
+    "id": "TC-004",
+    "title": "Password reset link expires after 24 hours",
+    "requirement": "REQ-AUTH-02: Password Reset",
+    "status": "refined",
+    "createdAt": "2026-06-03"
+  },
+  {
+    "id": "TC-005",
+    "title": "User can add item to cart",
+    "requirement": "REQ-CART-01: Cart Management",
+    "status": "automated",
+    "createdAt": "2026-06-05"
+  },
+  {
+    "id": "TC-006",
+    "title": "Cart total updates when quantity changes",
+    "requirement": "REQ-CART-01: Cart Management",
+    "status": "automated",
+    "createdAt": "2026-06-05"
+  },
+  {
+    "id": "TC-007",
+    "title": "Checkout fails gracefully with declined card",
+    "requirement": "REQ-CHECKOUT-01: Payment",
+    "status": "draft",
+    "createdAt": "2026-06-10"
+  },
+  {
+    "id": "TC-008",
+    "title": "Order confirmation email is sent after purchase",
+    "requirement": "REQ-CHECKOUT-02: Confirmation",
+    "status": "draft",
+    "createdAt": "2026-06-12"
+  },
+  {
+    "id": "TC-009",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Successful login with valid credentials",
+    "description": "Verify a registered user can log in successfully using correct username/email and password.",
+    "steps": [
+      "Navigate to https://flexos.test.varshealth.com",
+      "Enter a valid registered username/email in the username field",
+      "Enter the correct corresponding password in the password field",
+      "Click the 'Login' / 'Sign In' button"
+    ],
+    "expectedResult": "User is authenticated and redirected to the application dashboard/home page; session is established.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-010",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login fails with incorrect password",
+    "description": "Verify the system rejects login when a valid username is paired with an incorrect password.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username/email",
+      "Enter an incorrect password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected with a generic error message (e.g., 'Invalid username or password'); user remains on the login page; no indication of which field was wrong.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-011",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login fails with non-existent username",
+    "description": "Verify the system rejects login attempts using a username/email that does not exist in the system.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a username/email not registered in the system",
+      "Enter any password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected with a generic error message that does not reveal whether the account exists.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-012",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login with empty username and password",
+    "description": "Verify client-side/server-side validation when both fields are left blank.",
+    "steps": [
+      "Navigate to the login page",
+      "Leave username and password fields empty",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Form does not submit; inline validation messages indicate both fields are required.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-013",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login with empty username only",
+    "description": "Verify validation when username is blank but password is entered.",
+    "steps": [
+      "Navigate to the login page",
+      "Leave username field empty",
+      "Enter a valid password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Form does not submit; validation message prompts user to enter a username/email.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-014",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login with empty password only",
+    "description": "Verify validation when password is blank but username is entered.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username/email",
+      "Leave password field empty",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Form does not submit; validation message prompts user to enter a password.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-015",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Username field is case-insensitive (if applicable)",
+    "description": "Verify whether login succeeds when username/email casing differs from the stored record.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a registered username/email with altered case (e.g., UPPERCASE)",
+      "Enter the correct password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Behavior matches documented business rule (typically case-insensitive for email-based logins); result is consistent and not ambiguous.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-016",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Password field is case-sensitive",
+    "description": "Verify that password matching is case-sensitive as expected for security.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username/email",
+      "Enter the correct password but with inverted case",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login fails since password comparison is case-sensitive.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-017",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "SQL injection attempt in login fields",
+    "description": "Verify the login form is resistant to SQL injection payloads in username/password fields.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a SQL injection payload (e.g., admin' OR '1'='1) in the username field",
+      "Enter any value in the password field",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is rejected with a generic error; no authentication bypass occurs; no SQL error or stack trace is exposed.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-018",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "XSS injection attempt in login fields",
+    "description": "Verify the login form sanitizes/escapes script-based input to prevent reflected XSS.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a script payload (e.g., <script>alert(1)</script>) in the username field",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Input is treated as plain text/escaped; no script execution occurs; error message displayed normally.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-019",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Account lockout after multiple failed login attempts",
+    "description": "Verify the system enforces a lockout or throttling mechanism after repeated failed login attempts to prevent brute-force attacks.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username with an incorrect password",
+      "Repeat the failed attempt the configured number of times (e.g., 5 times)",
+      "Attempt login again with correct credentials"
+    ],
+    "expectedResult": "Account is temporarily locked or a CAPTCHA/delay is enforced; user is notified with an appropriate message; login is blocked until lockout period expires or account is unlocked.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-020",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Password field masks input",
+    "description": "Verify that characters typed into the password field are masked by default.",
+    "steps": [
+      "Navigate to the login page",
+      "Click into the password field",
+      "Type a password value"
+    ],
+    "expectedResult": "Entered characters are displayed as dots/asterisks, not plain text.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-021",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Show/Hide password toggle works correctly",
+    "description": "Verify the visibility toggle icon (if present) correctly shows and hides the password text.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a password into the password field",
+      "Click the 'show password' (eye) icon",
+      "Click it again to hide"
+    ],
+    "expectedResult": "Password text toggles between visible plain text and masked state accurately.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-022",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login session persists with 'Remember Me' checked",
+    "description": "Verify that selecting 'Remember Me' (if available) keeps the user logged in across browser sessions.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter valid credentials",
+      "Check the 'Remember Me' checkbox",
+      "Click 'Login'",
+      "Close and reopen the browser, then revisit the URL"
+    ],
+    "expectedResult": "User remains logged in without being prompted to re-authenticate, per the remember-me duration policy.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-023",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login session does not persist without 'Remember Me'",
+    "description": "Verify that without selecting 'Remember Me', the session ends when the browser is closed.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter valid credentials without checking 'Remember Me'",
+      "Click 'Login'",
+      "Close the browser completely and reopen, then revisit the URL"
+    ],
+    "expectedResult": "User is prompted to log in again; session was not persisted.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-024",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "'Forgot Password' link navigates correctly",
+    "description": "Verify the forgot password link/flow is accessible and functional from the login page.",
+    "steps": [
+      "Navigate to the login page",
+      "Click the 'Forgot Password?' link"
+    ],
+    "expectedResult": "User is redirected to the password reset/recovery page where they can initiate a reset request.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-025",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Logout functionality terminates the session",
+    "description": "Verify that logging out invalidates the current session and prevents access to protected pages.",
+    "steps": [
+      "Log in with valid credentials",
+      "Click 'Logout'",
+      "Use the browser back button to navigate to a previously accessed protected page"
+    ],
+    "expectedResult": "User is redirected to the login page and cannot access protected content without re-authenticating; session/token is invalidated server-side.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-026",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Session timeout after period of inactivity",
+    "description": "Verify the system logs out or re-prompts authentication after a defined idle timeout.",
+    "steps": [
+      "Log in with valid credentials",
+      "Leave the session idle for the configured timeout duration",
+      "Attempt to perform an action or navigate within the app"
+    ],
+    "expectedResult": "User session has expired; user is redirected to the login page or prompted to re-authenticate.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-027",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login over HTTPS with no sensitive data exposure",
+    "description": "Verify that the login page is served over HTTPS and credentials are not exposed in URL, browser history, or logs.",
+    "steps": [
+      "Navigate to https://flexos.test.varshealth.com login page",
+      "Confirm the connection uses HTTPS with a valid certificate",
+      "Submit login credentials",
+      "Inspect network request payload and browser URL"
+    ],
+    "expectedResult": "Connection is secured via HTTPS; credentials are sent via POST body (not URL/query string); password is not visible in browser history or server logs.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-028",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login with disabled or inactive account",
+    "description": "Verify that users with a disabled/inactive/suspended account cannot log in and receive an appropriate message.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter credentials belonging to a deactivated/suspended account",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login is denied with a clear message such as 'Your account is inactive, please contact support'; user is not authenticated.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-029",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login with leading/trailing whitespace in username",
+    "description": "Verify the system trims or correctly handles leading/trailing spaces entered in the username/email field.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter a valid username/email with extra leading and trailing spaces",
+      "Enter the correct password",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Login succeeds as whitespace is trimmed, or a clear validation error is shown; behavior is consistent.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-030",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login with maximum length input in fields",
+    "description": "Verify the system gracefully handles excessively long input in username/password fields without crashing or causing errors.",
+    "steps": [
+      "Navigate to the login page",
+      "Enter an extremely long string (e.g., 5000 characters) into the username field",
+      "Enter an extremely long string into the password field",
+      "Click 'Login'"
+    ],
+    "expectedResult": "Input is either truncated per field max-length constraint or rejected with a validation message; no application error or crash occurs.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-031",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Keyboard navigation and accessibility on login form",
+    "description": "Verify the login form can be fully operated using only the keyboard (Tab, Shift+Tab, Enter).",
+    "steps": [
+      "Navigate to the login page",
+      "Use Tab key to move focus through username field, password field, and login button",
+      "Enter valid credentials using keyboard only",
+      "Press Enter to submit"
+    ],
+    "expectedResult": "Focus order is logical; all fields/buttons are reachable and operable via keyboard; form submits successfully on Enter.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-032",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Login page UI renders correctly across browsers/devices",
+    "description": "Verify the login page layout, fields, and buttons render correctly across major browsers and screen sizes.",
+    "steps": [
+      "Open https://flexos.test.varshealth.com in Chrome, Firefox, Edge, and Safari",
+      "Resize browser window / test on mobile and tablet viewport widths",
+      "Observe the login form layout"
+    ],
+    "expectedResult": "Login form is fully visible, properly aligned, and usable across all tested browsers and screen sizes (responsive design).",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-033",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Browser autofill/autocomplete behavior",
+    "description": "Verify that browser autofill suggestions populate username/password fields correctly when previously saved.",
+    "steps": [
+      "Log in once and allow the browser to save credentials",
+      "Navigate to the login page again",
+      "Click into the username field"
+    ],
+    "expectedResult": "Browser autofill suggestion appears (if enabled) and correctly populates username and password fields when selected.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-034",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Concurrent login from multiple devices/browsers",
+    "description": "Verify the expected behavior when the same account logs in simultaneously from two different devices/browsers.",
+    "steps": [
+      "Log in with valid credentials on Device/Browser A",
+      "Log in with the same credentials on Device/Browser B",
+      "Check session status on Device/Browser A"
+    ],
+    "expectedResult": "Behavior matches the application's session policy (e.g., both sessions remain active, or the first session is invalidated with a notification); no unexpected errors occur.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-035",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Redirect to originally requested page after login",
+    "description": "Verify that accessing a protected URL while logged out redirects to login, and after successful authentication redirects back to the originally requested page (deep-link handling).",
+    "steps": [
+      "While logged out, attempt to navigate directly to a protected/internal page URL",
+      "Confirm redirection to the login page",
+      "Enter valid credentials and submit"
+    ],
+    "expectedResult": "After successful login, user is redirected to the originally requested protected page rather than a generic default landing page.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-036",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Error message does not leak sensitive system information",
+    "description": "Verify that login error messages and page source do not reveal stack traces, server details, or internal implementation info.",
+    "steps": [
+      "Navigate to the login page",
+      "Trigger a login failure using invalid credentials and malformed input",
+      "Inspect the error message and page response/network details"
+    ],
+    "expectedResult": "Only a generic, user-friendly error message is shown; no stack trace, server version, or internal error details are exposed.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-037",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "Password field rejects copy-paste restrictions (if applicable)",
+    "description": "Verify whether the password field allows or restricts paste actions, consistent with the application's security policy.",
+    "steps": [
+      "Navigate to the login page",
+      "Copy a password value to clipboard",
+      "Click into the password field and attempt to paste"
+    ],
+    "expectedResult": "Behavior matches documented policy; if pasting is allowed, password pastes correctly; if restricted, a clear indication is given (not a silent failure).",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  },
+  {
+    "id": "TC-038",
+    "module": "generate the test cases for login module for the URL https://flexos.test.varshealth.com",
+    "title": "CAPTCHA/verification challenge appears after suspicious activity",
+    "description": "Verify a CAPTCHA or bot-detection challenge is triggered after repeated failed attempts or suspicious automated behavior, if implemented.",
+    "steps": [
+      "Navigate to the login page",
+      "Submit several rapid failed login attempts in succession",
+      "Observe the login form on subsequent attempts"
+    ],
+    "expectedResult": "A CAPTCHA or similar challenge is presented before further login attempts are accepted, mitigating automated brute-force attacks.",
+    "status": "draft",
+    "createdAt": "2026-06-23T08:15:54.353Z"
+  }
+]

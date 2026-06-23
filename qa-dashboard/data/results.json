@@ -1,0 +1,54 @@
+[
+  {
+    "runId": "run-1",
+    "date": "2026-06-15",
+    "results": [
+      { "testCaseId": "TC-001", "status": "pass", "durationMs": 1100 },
+      { "testCaseId": "TC-002", "status": "pass", "durationMs": 950 },
+      { "testCaseId": "TC-005", "status": "pass", "durationMs": 1400 },
+      { "testCaseId": "TC-006", "status": "fail", "durationMs": 1600 }
+    ]
+  },
+  {
+    "runId": "run-2",
+    "date": "2026-06-17",
+    "results": [
+      { "testCaseId": "TC-001", "status": "pass", "durationMs": 1050 },
+      { "testCaseId": "TC-002", "status": "pass", "durationMs": 900 },
+      { "testCaseId": "TC-005", "status": "pass", "durationMs": 1350 },
+      { "testCaseId": "TC-006", "status": "pass", "durationMs": 1300 }
+    ]
+  },
+  {
+    "runId": "run-3",
+    "date": "2026-06-19",
+    "results": [
+      { "testCaseId": "TC-001", "status": "pass", "durationMs": 1080 },
+      { "testCaseId": "TC-002", "status": "fail", "durationMs": 2000 },
+      { "testCaseId": "TC-005", "status": "pass", "durationMs": 1320 },
+      { "testCaseId": "TC-006", "status": "pass", "durationMs": 1280 }
+    ]
+  },
+  {
+    "runId": "run-4",
+    "date": "2026-06-21",
+    "results": [
+      { "testCaseId": "TC-001", "status": "pass", "durationMs": 1020 },
+      { "testCaseId": "TC-002", "status": "pass", "durationMs": 870 },
+      { "testCaseId": "TC-005", "status": "pass", "durationMs": 1290 },
+      { "testCaseId": "TC-006", "status": "pass", "durationMs": 1250 },
+      { "testCaseId": "TC-003", "status": "skip", "durationMs": 0 }
+    ]
+  },
+  {
+    "runId": "run-5",
+    "date": "2026-06-23",
+    "results": [
+      { "testCaseId": "TC-001", "status": "pass", "durationMs": 990 },
+      { "testCaseId": "TC-002", "status": "pass", "durationMs": 860 },
+      { "testCaseId": "TC-005", "status": "pass", "durationMs": 1270 },
+      { "testCaseId": "TC-006", "status": "pass", "durationMs": 1230 },
+      { "testCaseId": "TC-003", "status": "pass", "durationMs": 1800 }
+    ]
+  }
+]
